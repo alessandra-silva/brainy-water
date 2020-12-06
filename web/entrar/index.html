@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link type="text/plain" rel="author" href="../humans.txt" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0" />
+  <meta name="theme-color" content="#0070C7" />
+  <title>Brainy Water - Entrar</title>
+
+  <!-- Meta Tags -->
+  <meta name="description" content="A melhor forma para você monitorar seu consumo de água e ajudar o meio ambiente." />
+  <meta name="language" content="PT" />
+  <meta name="keywords" content="Brainy Water, IOT, Monitoramento, Monitoramento de Água" />
+  <meta name="robot" content="Index, Follow" />
+  <meta name="rating" content="general" />
+  <meta name="distribution" content="global" />
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+  <meta name="apple-mobile-web-app-title" content="Brainy Water" />
+  <link rel="apple-touch-icon" sizes="192x192" href="../assets/images/icons/icon-192x192.png" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="../manifest.json" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../assets/images/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="../assets/images/icons/favicon.png" />
+
+  <!-- Webfonts -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Nunito:wght@700;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+</head>
+
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+  <header class="login__header">
+    <img class="login__header__background" src="../assets/images/login.svg" alt="Bem Vindo!" />
+  </header>
+
+  <main style="padding:0 3.2rem; margin-top:auto;">
+    <form class="form form--primary">
+      <div class="input-group">
+        <span>Email</span>
+        <div>
+          <label for="name">
+            <img src="../assets/images/icons/email.svg" alt="Seu email" />
+          </label>
+          <input type="email" placeholder="Informe o seu email" name="email" id="email" />
+        </div>
+      </div>
+      <div class="input-group">
+        <span>Senha</span>
+        <div>
+          <label for="lock">
+            <img src="../assets/images/icons/lock.svg" alt="Sua senha" />
+          </label>
+          <input type="password" placeholder="Informe sua senha" name="password" id="password" />
+          <img class="input-group-second-icon" src="../assets/images/icons/hide-password.svg" alt="Mostrar senha" onclick="togglePasswordVisibility()" />
+        </div>
+      </div>
+      <a class="u-text-right u-text-bold u-text-small" style="margin-left: auto;" href="#">Esqueceu sua senha?</a>
+
+      <label class="checkbox">
+        <span class="checkbox__input">
+          <input type="checkbox" name="keep-connected">
+          <span class="checkbox__control">
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+              <path fill='none' stroke='currentColor' stroke-width='2' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+          </span>
+        </span>
+        <span class="radio__label">Mantenha-me conectado</span>
+      </label>
+  
+      <button class="btn__primary" type="submit">Entrar</button>
+
+      <div class="form__separator">
+        <div class="form__separator--line"></div>
+        <div class="form__separator--text">ou</div>
+        <div class="form__separator--line"></div>
+      </div>
+
+      <a style="margin-bottom: 3.2rem;" class="btn__primary btn__outline btn__outline--grey" href="../#cadastro">Cadastre-se</a>
+    </form>
+  </main>
+
+</body>
+
+<script>
+  function togglePasswordVisibility() {
+      var passwordInput = document.querySelector("#password");
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    }
+</script>
+
+</html>

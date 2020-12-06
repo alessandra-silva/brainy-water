@@ -1,0 +1,51 @@
+// Media queries manager
+
+@mixin responsive($breakpoint) {
+	@if $breakpoint == small-phone {
+		@media only screen and (max-width: 25em) {
+			@content;
+		} // 400px
+	}
+
+	@if $breakpoint == phone {
+		@media only screen and (min-width: 25em) {
+			@content;
+		} // 400px
+	}
+
+	@if $breakpoint == tab-port {
+		@media only screen and (min-width: 46.875em), (orientation: landscape) {
+			@content;
+		} // 750px or smartphones in landscape mode
+	}
+
+	@if $breakpoint == tab-land {
+		@media only screen and (min-width: 60em) {
+			@content;
+		} // 1000px
+	}
+
+	@if $breakpoint == desktop {
+		@media only screen and (min-width: 75em) {
+			@content;
+		} // 1200px
+	}
+
+	@if $breakpoint == big-desktop {
+		@media only screen and (min-width: 106.25em) {
+			@content;
+		} // 1700px
+	}
+
+	@if $breakpoint == huge-desktop {
+		@media only screen and (min-width: 162.5em) {
+			@content;
+		} // 2600px
+	}
+
+	@if $breakpoint == insane-desktop {
+		@media only screen and (min-width: 200em) {
+			@content;
+		} // 3600px
+	}
+}

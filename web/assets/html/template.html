@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link type="text/plain" rel="author" href="{root_path}humans.txt" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0" />
+  <meta name="theme-color" content="{theme_color}" />
+  <title>{title} </title>
+
+  <!-- Meta Tags -->
+  <meta name="description" content="{description}" />
+  <meta name="language" content="PT" />
+  <meta name="keywords" content="Brainy Water, IOT, Monitoramento, Monitoramento de Água" />
+  <meta name="robot" content="Index, Follow" />
+  <meta name="rating" content="general" />
+  <meta name="distribution" content="global" />
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+  <meta name="apple-mobile-web-app-title" content="Brainy Water" />
+  <link rel="apple-touch-icon" sizes="192x192" href="{root_path}assets/images/icons/icon-192x192.png" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="{root_path}manifest.json" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{root_path}assets/images/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="{root_path}assets/images/icons/favicon.png" />
+
+  <!-- Webfonts -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Nunito:wght@700;900&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    *, *::after, *::before {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+      box-sizing: border-box;
+    } 
+  
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header, hgroup,
+    textarea, input, button, a,
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+    body {
+      line-height: 1;
+    }
+    ol, ul {
+      list-style: none;
+    }
+    blockquote, q {
+      quotes: none;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+      content: '';
+      content: none;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+  </style>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{root_path}assets/css/style.css" />
+</head>
+
+<body>
+
+  {{nav}}
+
+  {{header}}
+
+  {{content}}
+
+
+  <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('{root_path}service-worker.js')
+          .then(reg => console.info('Service worker registrado'))
+          .catch(err => console.error('Erro ao registrar o service worker'));
+      }
+  </script>
+
+  <script>
+    {{ script }}
+  </script>
+
+</body>
+
+</html>

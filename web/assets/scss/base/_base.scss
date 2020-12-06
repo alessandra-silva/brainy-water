@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+	scroll-behavior: smooth;
+}
+
+html {
+	font-size: 56.25%;
+
+	@include responsive(phone) {
+		font-size: 60%;
+	}
+
+	@include responsive(desktop) {
+		font-size: 68.75%;
+	}
+
+	@include responsive(big-desktop) {
+		font-size: 75%;
+	}
+
+	@include responsive(huge-desktop) {
+		font-size: 100%;
+	}
+
+	@include responsive(insane-desktop) {
+		font-size: 200%;
+	}
+}
+
+body,
+main {
+	width: 100%;
+	box-sizing: border-box;
+	background-color: var(--white-color);
+	font-family: var(--font-default);
+	font-weight: 300;
+	font-size: 1.6rem;
+	font-style: normal;
+}
+
+*::selection {
+	background: var(--primary-color);
+	color: var(--white-color);
+}

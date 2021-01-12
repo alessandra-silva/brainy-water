@@ -19,9 +19,9 @@
         {
             $emailObj = new Email($email);
 
-            $name = '';
-            $replyTo = '';
-            $message = '';
+            $name = $nome;
+            $replyTo = $contato;
+            $message = $message;
             $altBody = '';
 
             $sendEmail = $emailObj->sendEmail($name, $replyTo, $message, $altBody);

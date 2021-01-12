@@ -1,9 +1,9 @@
 <?php
 
     require_once 'Email.php';
-    $nome = $_REQUEST['name'];
-    $contato = $_REQUEST['email'];
-    $mensagem = $_REQUEST['message'];
+    $nome = $_POST['name'];
+    $contato = $_POST['email'];
+    $mensagem = $_POST['message'];
 
     class sendEmail
     {
@@ -15,13 +15,13 @@
             $this->connection = $connection;
         }
 
-        public function sendUserEmail(string $email): bool
+        public function sendUserEmail(string $email, $nome, $contato, $mensagem): bool
         {
             $emailObj = new Email($email);
 
             $name = $nome;
             $replyTo = $contato;
-            $message = $message;
+            $message = $mensagem;
             $altBody = '';
 
             $sendEmail = $emailObj->sendEmail($name, $replyTo, $message, $altBody);

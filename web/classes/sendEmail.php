@@ -1,9 +1,9 @@
 <?php
 
     require_once 'Email.php';
-    $nome = isset($_POST['name']) ? $_POST['name'] : '';
-    $contato = isset($_POST['email']) ? $_POST['email'] : '';
-    $mensagem = isset($_POST['message']) ? $_POST['message'] : '';
+    $nome = $_REQUEST['name'];
+    $contato = $_REQUEST['email'];
+    $mensagem = $_REQUEST['message'];
 
     class sendEmail
     {

@@ -15,7 +15,7 @@ class Email
     {
       $fromHost = 'smtp.gmail.com';
       $from = 'projetowaterbrainy@gmail.com';
-      $fromPassword = '18023103bw';
+      $fromPassword = 'bw18023103';
       $fromPort = 587;
 
       $mail = new PHPMailer();

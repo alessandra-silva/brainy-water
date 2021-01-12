@@ -5,7 +5,7 @@
     $contato = $_POST['email'];
     $mensagem = $_POST['message'];
 
-    class sendEmail
+    class sendEmailTo
     {
 
         private $connection;

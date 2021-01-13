@@ -11,25 +11,27 @@ require 'PHPMailer/src/SMTP.php';
 class Email
 {
 
-    public function sendEmail(string $message, string $subject, string $altBody, string $replyTo): bool
+    public function sendEmail(string $message, string $subject, string $altBody, string $replyTo): void
     {
-      $fromHost = 'smtp.gmail.com';
+
       $from = 'projetowaterbrainy@gmail.com';
       $fromPassword = 'bw18023103';
-      $fromPort = 587;
+
 
       $mail = new PHPMailer();
       $mail->isSMTP();
-      $mail->Host = $fromHost;
+      $mail->Host = 'smtp.gmail.com';
+      $mail->SMTPAutoTLS = false;
+      $mail->SMTPDebug = 1;
       $mail->SMTPAuth = true;
       $mail->SMTPSecure = 'tls';
       $mail->Username = $from;
       $mail->Password = $fromPassword;
-      $mail->Port = $fromPort;
+      $mail->Port = 587;
 
-      $to = $this->email;
+      $to = $from;
 
-      $mail->setFrom($replyTo, $replyTo);
+      $mail->setFrom($from, 'BrainyWater');
       $mail->addReplyTo($replyTo, $replyTo);
       $mail->addAddress($to);
 
@@ -39,7 +41,11 @@ class Email
       $mail->AltBody = $altBody;
       $mail->CharSet = 'UTF-8';
       $mail->Encoding = 'base64';
-
-      return !$mail->send() ? false : true;
+      if(!$mail->send()) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    } else {
+        echo 'Message has been sent';
+    }
     }
 }

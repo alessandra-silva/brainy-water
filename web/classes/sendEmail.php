@@ -1,13 +1,12 @@
 <?php
 
     require_once 'Email.php';
-    $nome = $_POST['name'];
-    $contato = $_POST['email'];
-    $mensagem = $_POST['message'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
 
     class sendEmailTo
     {
-
         private $connection;
 
         public function __construct($connection)
@@ -15,16 +14,11 @@
             $this->connection = $connection;
         }
 
-        public function sendUserEmail(string $email, $nome, $contato, $mensagem): bool
+        public function sendUserEmail(string $email, string $name, string $message, string $replyTo): bool
         {
             $emailObj = new Email($email);
 
-            $name = $nome;
-            $replyTo = $contato;
-            $message = $mensagem;
-            $altBody = '';
-
-            $sendEmail = $emailObj->sendEmail($name, $replyTo, $message, $altBody);
+            $sendEmail = $emailObj->sendEmail($email, $name, $message, $replyTo);
 
             return $sendEmail;
         }

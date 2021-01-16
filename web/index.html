@@ -120,7 +120,7 @@
   </main>
 
   <section class ="home__form" id="cadastro">
-    <form class="form form--primary" action="classes/sendEmail.php" method="post">
+    <form class="form form--primary" onsubmit="sendEmail(event, this);" >
       <h2 class="title u-text-center u-margin-bottom-medium">Entre em contato conosco e adquira o seu BrainyWater</h2>
       <div class="input-group">
         <span>Nome</span>
@@ -135,7 +135,7 @@
         <span>E-mail</span>
         <div>
           <label for="email">
-            <img src="assets/images/icons/email-icon.svg" alt="sSeu E-mail" />
+            <img src="assets/images/icons/email-icon.svg" alt="Seu E-mail" />
           </label>
           <input type="text" placeholder="Informe o seu E-mail" name="email" id="email" />
         </div>
@@ -152,6 +152,43 @@
     </form>
   </section>
 
+  <script>
+    function sendEmail(event, form) {
+        event.preventDefault();
+        const inputName = form.name;
+        const inputEmail = form.email;
+        const inputMessage = form.message;
+        if (inputName && inputEmail && inputMessage) {
+          const name = inputName.value;
+          const email = inputEmail.value;
+          const message = inputMessage.value;
+          fetch('./helpers/sendEmail/', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+              from: 'projetowaterbrainy@gmail.com', 
+              to: 'projetowaterbrainy@gmail.com', 
+              replyTo: email, 
+              replyToName: name,
+              message: message, 
+              subject: `Adquirir Brainy-Water - ${name}`,
+              altBody: message
+            })
+          })
+          .then(response => {
+            if (response.status == 200) {
+              alert('Sua mensagem foi enviada com sucesso.');
+            } else {
+              alert('Algum problema ocorreu ao tentar enviar seu E-mail. Tente novamente mais tarde!');
+            }
+          })
+          .catch(error => console.error(error));
+        }
+      }
+  </script>
 </body>
 
 </html>

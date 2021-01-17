@@ -2,10 +2,16 @@
 
 class Database {
 
-  private $host = "localhost";
-  private $database_name = "id14599367_brainywater";
-  private $username = "id14599367_mateux";
-  private $password = "G9lMJ@5wiwsO+tUn";
+   // Remote
+   // private $host = "localhost";
+   // private $database_name = "id14599367_brainywater";
+   // private $username = "id14599367_mateux";
+   // private $password = "G9lMJ@5wiwsO+tUn";
+
+   private $host = "127.0.0.1";
+   private $database_name = "BrainyWater";
+   private $username = "mateux";
+   private $password = "duarskit840";
 
   public $conn;
 

@@ -67,7 +67,7 @@
           <img class="input-group-second-icon" src="../assets/images/icons/hide-password.svg" alt="Mostrar senha" onclick="togglePasswordVisibility()" />
         </div>
       </div>
-      <a class="u-text-right u-text-bold u-text-small" style="margin-left: auto;" href="#">Esqueceu sua senha?</a>
+      <a class="u-text-right u-text-bold u-text-small" onClick="showModal()" style="margin-left: auto;" href="#">Esqueceu sua senha?</a>
 
       <label class="checkbox">
         <span class="checkbox__input">
@@ -92,17 +92,92 @@
     </form>
   </main>
 
+  <div id="recoverPasswordModal" class="modal">
+
+    <div class="modal__container">
+      <div class="modal__header">
+        <h2 class="subtitle">Esqueceu sua senha?</h2>
+      </div>
+      <div class="modal__content">
+        <p>Sem problemas! Apenas nos informe seu email,
+        e logo você poderá restaurar sua senha.</p>
+        <form class="form" style="margin: 2.4rem 0;">
+          <div class="input-group">
+            <span>Email</span>
+            <div>
+              <label for="name">
+                <img src="../assets/images/icons/email.svg" alt="Seu email" />
+              </label>
+              <input type="email" placeholder="Informe o seu email" name="email-password" id="email-password" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal__footer">
+        <button style="height: 4.8rem; margin-right: 1.2rem;" onClick="closeModal()" class="btn__outline btn__outline--grey" type="button">Cancelar</button>
+        <button style="height: 4.8rem; margin-left: 1.2rem;" onClick="recoverPassword()" class="btn__primary" type="button">Enviar</button>
+      </div>
+    </div>
+
+  </div>
+
 </body>
 
 <script>
   function togglePasswordVisibility() {
-      var passwordInput = document.querySelector("#password");
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-      } else {
-        passwordInput.type = "password";
-      }
+    var passwordInput = document.querySelector("#password");
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
     }
-</script>
+  }
 
+  var modal = document.querySelector("#recoverPasswordModal");
+
+  function showModal() {
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+<script>
+    var busy = false;
+    function recoverPassword() {
+      if (!busy) {
+        busy = true;
+        const inputEmail = document.querySelector('#email-password');
+        if (inputEmail) {
+          const email = inputEmail.value;
+          fetch('./new-password.php', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+              email: email
+            })
+          })
+          .then(response => {
+            if (response.status == 200) {
+              alert('Sua mensagem foi enviada com sucesso.');
+            } else {
+              alert('Algum problema ocorreu ao tentar recuperar sua senha. Tente novamente mais tarde!');
+            }
+          })
+          .catch(error => console.error(error));
+        }
+      }
+      busy = false;
+    }
+  </script>
 </html>

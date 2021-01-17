@@ -29,8 +29,8 @@ if (isset($data->email)) {
   $user->email = $data->email;
 
   $password = sha1($email + 'brainy_water');
-  $hashedPassword = $user->generate_password($password);
-  $user->password = $hashedPassword;
+  $user->password = $password;
+  $user->generate_password();
 
   $response = $user->update();
 

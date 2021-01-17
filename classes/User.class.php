@@ -10,7 +10,7 @@ class User
 
   // Columns
 	public $email;
-	public $newPassword;
+  public $password;
 
   // Database connection
   public function __construct($db)
@@ -18,8 +18,8 @@ class User
     $this->conn = $db;
   }
 
-	public static function generate_password(string $password): string {
-		return hash("sha512", $password);
+	public function generate_password(): void {
+		$this->password = hash("sha512", $this->password);
 	}
 
   // CREATE
@@ -28,7 +28,6 @@ class User
     // sanitize
     $this->email = htmlspecialchars(strip_tags($this->email));
 
-    // 1) Verify sensor token
     $sqlQuery = "SELECT `id` 
                    FROM `" . $this->db_table . "`
                    WHERE `email` = :email";
@@ -56,10 +55,36 @@ class User
 
       if ($stmt->execute()) {
         return array("status" => 200, "message" => "Password updated.");
-    }
-			
+      }
+
       return array("status" => 500, "message" => "Something went wrong.");
- 
+    }
+  }
+
+  public function authenticate()
+  {
+    // sanitize
+    $this->email = htmlspecialchars(strip_tags($this->email));
+    $this->password = htmlspecialchars(strip_tags($this->password));
+
+    $sqlQuery = "SELECT `id` 
+                   FROM `" . $this->db_table . "`
+                   WHERE `email` = :email
+                   AND `password` = :password";
+
+    $stmt = $this->conn->prepare($sqlQuery);
+
+    // Bind data
+    $stmt->bindParam(":email", $this->email);
+    $stmt->bindParam(":password", $this->password);
+
+    $stmt->execute();
+    $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$dataRow) {
+      return array("status" => 401, "message" => "Unauthorized.");
+    } else {
+      return array("status" => 200, "message" => "Granted.", "user" => $dataRow['id']);
     }
   }
 }

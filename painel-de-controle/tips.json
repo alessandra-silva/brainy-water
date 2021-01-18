@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "description": "Tome banhos mais curtos. A título de exemplo, um banho com duração de 15 minutos, com registro parcialmente aberto, pode consumir até 135 litros de água. Reduzindo esse tempo para 5 minutos, e fechando o registro ao se ensaboar, o gasto pode se restringir a 45 litros (você economiza 90 litros!)."
+  },
+  {
+    "id": 2,
+    "description": "Atente-se a vazamentos! Você sabia que um buraco de 2 milímetros no encanamento pode desperdiçar cerca de 3 caixas d’água de mil litros? Por isso, fique sempre de olho nos canos da sua residência e tenha certeza de que estão ok!"
+  },
+  {
+    "id": 3,
+    "description": "Mantenha as torneiras bem fechadas! Observe se não continuam pingando água mesmo quando fechadas. No período de um ano, ao menos 16 mil litros de água limpa são desperdiçados apenas pelo mau fechamento das torneiras. Portanto, fique de olho!"
+  },
+  {
+    "id": 4,
+    "description": "Que tal reutilizar a água da máquina de lavar? A água de enxague da lavadora de roupas pode ser utilizada para lavar o piso interno e até as calçadas! Tente fazer uso dessa ideia :)"
+  },
+  {
+    "id": 5,
+    "description": "Lave roupas com menos regularidade. Uma simples máquina de lavar de 10 kg pode consumir de 82 a 135 litros de água a cada uso. Então, se torna mais sustentável acumular roupas para, assim, lavá-las todas de uma vez, com a capacidade máxima da lavadora. Dessa forma, diminui-se a frequência de uso!"
+  },
+  {
+    "id": 6,
+    "description": "Utilize a descarga de forma consciente! Uma única descarga, se pressionada por apenas seis segundos, pode consumir entre 6 e 10 litros de água. Por isso, faça uso dela somente quando houver necessidade (e não jogue lixo no vaso sanitário)."
+  },
+  {
+    "id": 7,
+    "description": "Não faça uso de mangueiras! Em 15 minutos, ela pode consumir 180 litros de água. Então, quando for lavar o carro, por exemplo, utilize um balde e um pano úmido."
+  },
+  {
+    "id": 8,
+    "description": "Escove os dentes e enxague a boca com água em um copo. Assim você terá maior economia :)"
+  },
+  {
+    "id": 9,
+    "description": "Seu ar-condicionado está pingando água? Uma sugestão é colocar um balde embaixo da goteira e utilizar a água coletada para atividades domésticas."
+  },
+  {
+    "id": 10,
+    "description": "Lave frutas, legumes e verduras em um recipiente com água, ao invés de utilizar água corrente. Depois, essa mesma água pode ser usada para regar plantas, por exemplo."
+  },
+  {
+    "id": 11,
+    "description": "Cozinhe legumes com pouca água. Além de ferver mais rápido, você estará economizando água (e gás também!)."
+  },
+  {
+    "id": 12,
+    "description": "Deixe a louça de molho antes de lavar. Você pode fechar a torneira enquanto ensaboa a louça, deixando para enxaguar tudo no final. Assim estará poupando água :D."
+  },
+  {
+    "id": 13,
+    "description": "Descongele alimentos na geladeira. Não use água corrente!"
+  },
+  {
+    "id": 14,
+    "description": "Plantas absorvem mais água nos horários quentes. Portanto, molhe-as de manhã ou à noite (e use regador!)."
+  },
+  {
+    "id": 15,
+    "description": "Carregue sua própria garrafinha de água. Além de economizar copos descartáveis, você estará evitando a compra de novas garrafas plásticas, que utilizam grande montante de água para serem produzidas."
+  },
+  {
+    "id": 16,
+    "description": "Não jogue óleo na pia! Sabia que, um único litro de óleo, pode contaminar até 400 mil litros de água?"
+  },
+  {
+    "id": 17,
+    "description": "Evite trocar a água da piscina. Aprenda como limpá-la corretamente, e estará evitando o descarte de grande volume de água (muitas vezes sem necessidade)."
+  },
+  {
+    "id": 18,
+    "description": "Não corte muito a grama. Quanto maior a grama, mais profundas são suas raízes, e quanto mais longas as raízes, menos elas precisarão de rega."
+  },
+  {
+    "id": 19,
+    "description": "Leve as panelas à mesa. Evite usar travessas e outros utensílios, e leve a própria panela para a mesa. Dessa forma, você suja menos louças, e também economiza água!"
+  },
+  {
+    "id": 20,
+    "description": "Utilize o mesmo copo para tomar água. Não há necessidade de pegar um novo copo sempre que for beber água. Portanto, use o mesmo copo o dia todo, e reduzirá gastos na lavagem de louça."
+  },
+  {
+    "id": 21,
+    "description": "Ensine crianças, desde pequenas, a economizar água. Você pode até transformar isso em uma brincadeira, sugerindo, por exemplo, uma competição para ver quem toma o melhor banho em menos tempo (uma junção de economia com diversão!)."
+  }
+]

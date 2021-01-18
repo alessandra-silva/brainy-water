@@ -27,7 +27,11 @@
 		}
 
 		label {
-			margin-right: 1.2rem;
+      margin-right: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
 			img {
 				height: 100%;
 			}

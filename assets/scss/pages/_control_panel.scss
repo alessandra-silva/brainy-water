@@ -1,0 +1,11 @@
+.control-panel {
+  padding: 0 3.2rem;
+
+  &__title {
+    margin-top: 2.4rem;
+    font-size: 2.4rem;
+    font-weight: normal;
+    color: var(--primary-color);
+    font-family: var(--font-display);
+  }
+}

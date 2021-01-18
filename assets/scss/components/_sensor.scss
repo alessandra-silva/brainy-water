@@ -1,0 +1,44 @@
+.sensor {
+  padding: 2.4rem;
+  width: 100%;
+  border-radius: 0.8rem;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  box-shadow: 0 .4rem 2rem rgba(0, 112, 199, 0.3);
+
+  &:not(:last-child) {
+    margin-bottom: 2.4rem;
+  }
+
+  &--secondary {
+    background-color: var(--primary-color-dark);
+    box-shadow: 0 .4rem 2rem rgba(9, 64, 103, 0.4);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    margin-bottom: 2.4rem;
+    font-weight: bold;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    margin-bottom: .8rem;
+  }
+
+  &__icon {
+    height: 2.4rem;
+  }
+
+  &__edit {
+    height: 2.4rem;
+    margin-left: auto;
+  }
+}

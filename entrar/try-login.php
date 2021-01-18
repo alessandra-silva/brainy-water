@@ -5,7 +5,6 @@ if (isset($_SESSION)) {
 }
 
 require_once '../classes/User.class.php';
-require_once '../helpers/send-email/sendEmail.php';
 require_once '../api/src/config/database.php';
 
 header("Access-Control-Allow-Origin: *");
@@ -39,7 +38,9 @@ if (isset($data->email) && isset($data->password)) {
   if ($response['status'] == 200) {
     session_start();
     $_SESSION['user'] = $response['user'];
-    header("Location: ../home/");
+    $_SESSION['name'] = $response['name'];
+    $_SESSION['picture'] = $response['picture'];
+    $_SESSION['isAuth'] = true;
   }
 } else {
   $response = array("status" => 400, "message" => "Malformed request.");

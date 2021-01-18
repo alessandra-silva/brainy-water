@@ -47,7 +47,7 @@
   </header>
 
   <main style="padding:0 3.2rem; margin-top:auto;">
-    <form class="form form--primary">
+    <form class="form form--primary" onsubmit="tryLogin(event, this)">
       <div class="input-group">
         <span>Email</span>
         <div>
@@ -67,7 +67,7 @@
           <img class="input-group-second-icon" src="../assets/images/icons/hide-password.svg" alt="Mostrar senha" onclick="togglePasswordVisibility()" />
         </div>
       </div>
-      <a class="u-text-right u-text-bold u-text-small" onClick="showModal()" style="margin-left: auto;" href="#">Esqueceu sua senha?</a>
+      <a class="u-text-right u-text-bold u-text-small" onclick="showModal()" style="margin-left: auto;" href="#">Esqueceu sua senha?</a>
 
       <label class="checkbox">
         <span class="checkbox__input">
@@ -114,8 +114,8 @@
         </form>
       </div>
       <div class="modal__footer">
-        <button style="height: 4.8rem; margin-right: 1.2rem;" onClick="closeModal()" class="btn__outline btn__outline--grey" type="button">Cancelar</button>
-        <button style="height: 4.8rem; margin-left: 1.2rem;" onClick="recoverPassword()" class="btn__primary" type="button">Enviar</button>
+        <button style="height: 4.8rem; margin-right: 1.2rem;" onclick="closeModal()" class="btn__outline" type="button">Cancelar</button>
+        <button style="height: 4.8rem; margin-left: 1.2rem;" onclick="recoverPassword()" class="btn__primary" type="button">Enviar</button>
       </div>
     </div>
 
@@ -148,36 +148,72 @@
       modal.style.display = "none";
     }
   }
-</script>
-<script>
-    var busy = false;
-    function recoverPassword() {
-      if (!busy) {
-        busy = true;
-        const inputEmail = document.querySelector('#email-password');
-        if (inputEmail) {
-          const email = inputEmail.value;
-          fetch('./new-password.php', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ 
-              email: email
-            })
+
+  var busy = false;
+  
+  function recoverPassword() {
+    if (!busy) {
+      busy = true;
+      const inputEmail = document.querySelector('#email-password');
+      if (inputEmail) {
+        const email = inputEmail.value;
+        fetch('./new-password.php', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ 
+            email: email
           })
+        })
+        .then(response => {
+          if (response.status == 200) {
+            alert('Sua mensagem foi enviada com sucesso.');
+          } else {
+            alert('Algum problema ocorreu ao tentar recuperar sua senha. Tente novamente mais tarde!');
+          }
+        })
+        .catch(error => console.error(error));
+      }
+    }
+    busy = false;
+  }
+
+  function tryLogin(event, form) {
+    if (!busy) {
+      busy = true;
+      event.preventDefault();
+      const inputEmail = form.email;
+      const inputPassword = form.password;
+      if (inputEmail && inputPassword) {
+        const email = inputEmail.value;
+        const password = inputPassword.value;
+        fetch('./try-login.php', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password
+          })
+        })
           .then(response => {
             if (response.status == 200) {
-              alert('Sua mensagem foi enviada com sucesso.');
+              window.location.href = '../painel-de-controle/';
+            } else if (response.status == 401) {
+              alert('E-mail ou senha inválidos.');
             } else {
-              alert('Algum problema ocorreu ao tentar recuperar sua senha. Tente novamente mais tarde!');
+              alert('Algum problema ocorreu ao tentar autenticar!');
             }
           })
           .catch(error => console.error(error));
-        }
       }
-      busy = false;
     }
-  </script>
+    busy = false;
+  }
+
+</script>
 </html>

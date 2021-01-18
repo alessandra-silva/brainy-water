@@ -1,31 +1,39 @@
 .u-text-color-white {
-	color: var(--white-color);
+	color: var(--white-color) !important;
 }
 
 .u-text-color-primary {
-	color: var(--primary-color);
+	color: var(--primary-color) !important;
+}
+
+.u-text-display {
+	font-family: var(--font-display) !important;
 }
 
 .divider {
-	width: 100%;
+	width: 100% !important;
 }
 
 .u-text-center {
-	text-align: center;
+	text-align: center !important;
 }
 
 .u-margin-bottom-medium {
-	margin-bottom: 2.4rem;
+	margin-bottom: 2.4rem !important;
 }
 
 .u-text-bold {
-	font-weight: bold;
+	font-weight: bold !important;
+}
+
+.u-text-black {
+	font-weight: 900 !important;
 }
 
 .u-text-right {
-	text-align: right;
+	text-align: right !important;
 }
 
 .u-text-small {
-	font-size: 1.6rem;
+	font-size: 1.6rem !important;
 }

@@ -1,0 +1,25 @@
+.tip {
+  margin: 2.4rem 0;
+  padding: 2.4rem;
+  width: 100%;
+  border: .2rem solid var(--primary-color);
+  border-radius: 0.8rem;
+  color: var(--primary-color);
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-family: var(--font-display);
+    margin-bottom: 1.6rem;
+  }
+
+  &__lamp {
+    height: 2.4rem;
+  }
+
+  &__close {
+    height: 2.4rem;
+    margin-left: auto;
+  }
+}

@@ -67,7 +67,7 @@ class User
     $this->email = htmlspecialchars(strip_tags($this->email));
     $this->password = htmlspecialchars(strip_tags($this->password));
 
-    $sqlQuery = "SELECT `id` 
+    $sqlQuery = "SELECT `id`, `name` , `picture`
                    FROM `" . $this->db_table . "`
                    WHERE `email` = :email
                    AND `password` = :password";
@@ -84,7 +84,7 @@ class User
     if (!$dataRow) {
       return array("status" => 401, "message" => "Unauthorized.");
     } else {
-      return array("status" => 200, "message" => "Granted.", "user" => $dataRow['id']);
+      return array("status" => 200, "message" => "Granted.", "user" => $dataRow['id'], "name" => $dataRow['name'], "picture" => $dataRow['picture']);
     }
   }
 }

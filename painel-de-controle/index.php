@@ -54,11 +54,11 @@ $picture = $_SESSION['picture'];
 
 <body onload="startup();" style="min-height: 100vh; display: flex; flex-direction: column;">
   <header class="header">
-    <img class="header__background" src="../assets/images/icons/main-header.svg" />
+    <img loading="lazy" class="header__background" src="../assets/images/icons/main-header.svg" />
     <div class="header__content">
-      <img class="header__logout-icon" src="../assets/images/icons/logout.svg" onclick="logout();" alt="Sair" />
+      <img loading="lazy" class="header__logout-icon" src="../assets/images/icons/logout.svg" onclick="logout();" alt="Sair" />
       <h1>Painel de Controle</h1>
-      <img class="header__profile-pic" src="../<?php echo $picture ?>" id="user-picture" class="header" onclick="goToProfile();" alt="<?php echo $name ?>" />
+      <img loading="lazy" class="header__profile-pic" src="../<?php echo $picture ?>" id="user-picture" class="header" onclick="goToProfile();" alt="<?php echo $name ?>" />
     </div>
   </header>
 
@@ -69,7 +69,7 @@ $picture = $_SESSION['picture'];
 </body>
 
 <script>
-  // <img src = "../assets/images/icons/email.svg" / >
+  // <img loading="lazy" src = "../assets/images/icons/email.svg" / >
   function showModal(id, img, value) {
     let markup = `<div class="modal" id="modal" style="display: block">
                   <div class="modal__container">
@@ -82,7 +82,7 @@ $picture = $_SESSION['picture'];
                           <span>Nome do sensor</span>
                           <div>
                             <label for="name">
-                              ${img == 1 ? '<img src="../assets/images/icons/reservoir-blue.svg" />' : '<img src="../assets/images/icons/flow-blue.svg" />'}
+                              ${img == 1 ? '<img loading="lazy" src="../assets/images/icons/reservoir-blue.svg" />' : '<img loading="lazy" src="../assets/images/icons/flow-blue.svg" />'}
                             </label>
                             <input type="text" value="${value}" name="sensor-name" id="sensor-name" />
                           </div>
@@ -127,9 +127,11 @@ $picture = $_SESSION['picture'];
   }
 
   function getUserMessages() {
+    showSpinner();
     fetch('./messages.json').then(response => {
       return response.json();
     }).then(data => {
+      removeSpinner();
       var randomNumber = getRandomArbitrary(1, data.length);
       var message = data[randomNumber - 1].message;
       let markup = `<h2 class="control-panel__title">
@@ -137,31 +139,33 @@ $picture = $_SESSION['picture'];
                       <span class="u-text-black u-text-display"><?php echo $name ?></span>
                     </h2>`;
       homeContainer.insertAdjacentHTML('afterbegin', markup);
+      getTips();
     }).catch(err => {
       console.error(err);
     });
-    getTips();
   }
 
   function getTips() {
+    showSpinner();
     fetch('./tips.json').then(response => {
       return response.json();
     }).then(data => {
+      removeSpinner();
       var randomNumber = getRandomArbitrary(1, data.length);
       var message = data[randomNumber - 1].description;
       let markup = `<div class="tip">
                       <div class="tip__header">
-                        <img class="tip__lamp" src="../assets/images/icons/lamp.svg" />
+                        <img loading="lazy" class="tip__lamp" src="../assets/images/icons/lamp.svg" />
                         <span style="margin-left: 0.8rem;">Dica</span>
-                        <img onclick="closeTip();" class="tip__close" src="../assets/images/icons/close.svg" />
+                        <img loading="lazy" onclick="closeTip();" class="tip__close" src="../assets/images/icons/close.svg" />
                       </div>
                       <p>${message}</p>
                     </div>`;
       homeContainer.insertAdjacentHTML('beforeend', markup);
+      getSensors();
     }).catch(err => {
       console.error(err);
     });
-    getSensors();
   }
 
   function removeAllSensors() {
@@ -215,27 +219,41 @@ $picture = $_SESSION['picture'];
     return Math.floor((Math.random() * max) + min);
   }
 
+  function showSpinner() {
+    let markup = `<div class="spinner"></div>`;
+    homeContainer.insertAdjacentHTML('afterend', markup);
+  }
+
+  function removeSpinner() {
+    var spinners = document.querySelectorAll('.spinner');
+    spinners.forEach(spinner => {
+      spinner.remove();
+    });
+  }
+
   function getSensors() {
     if (!busy) {
+      showSpinner();
       busy = true;
       fetch('./get-sensors.php')
         .then(response => response.json())
         .then(response => {
+          removeSpinner();
           if (response.status == 200) {
             response.sensors.forEach(sensor => {
               var type = sensor.type == 'caixa' ? 1 : 2;
               let markup = `<div class="sensor ${type == 1 ? 'sensor--secondary' : ''}" >
-                  <div class="sensor__header">
-                    ${type == 1 ? '<img class="sensor__icon" src="../assets/images/icons/reservoir.svg" />' : '<img class="sensor__icon" src="../assets/images/icons/flow.svg" />'}
-                    <span style="margin-left: 0.8rem;">${sensor.name}</span>
-                    <img class="sensor__edit" src="../assets/images/icons/pencil.svg" onclick="showModal(${sensor.id}, ${type}, '${sensor.name}')" />
-                  </div>
-                  <h3>Última leitura (${sensor.date}):</h3>
-                  <div class=" sensor__content">
-                    <img class="sensor__droplet" src="../assets/images/icons/droplet.svg" />
-                    <span style="margin-left: 0.8rem;">${sensor.last_reading} litros</span>
-                  </div>
-                </div>`;
+                              <div class="sensor__header">
+                                ${type == 1 ? '<img loading="lazy" class="sensor__icon" src="../assets/images/icons/reservoir.svg" />' : '<img loading="lazy" class="sensor__icon" src="../assets/images/icons/flow.svg" />'}
+                                <span style="margin-left: 0.8rem;">${sensor.name}</span>
+                                <img loading="lazy" class="sensor__edit" src="../assets/images/icons/pencil.svg" onclick="showModal(${sensor.id}, ${type}, '${sensor.name}')" />
+                              </div>
+                              <h3>Última leitura (${sensor.date}):</h3>
+                              <div class=" sensor__content">
+                                <img loading="lazy" class="sensor__droplet" src="../assets/images/icons/droplet.svg" />
+                                <span style="margin-left: 0.8rem;">${sensor.last_reading} litros</span>
+                              </div>
+                            </div>`;
               homeContainer.insertAdjacentHTML('beforeend', markup);
             });
           } else {

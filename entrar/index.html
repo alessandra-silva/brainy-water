@@ -41,9 +41,9 @@
 
 </head>
 
-<body style="min-height: 100vh; display: flex; flex-direction: column;">
+<body onload="isAuth();" style="min-height: 100vh; display: flex; flex-direction: column;">
   <header class="login__header">
-    <img class="login__header__background" src="../assets/images/login.svg" alt="Bem Vindo!" />
+    <img loading="lazy" class="login__header__background" src="../assets/images/login.svg" alt="Bem Vindo!" />
   </header>
 
   <main style="padding:0 3.2rem; margin-top:auto;">
@@ -52,7 +52,7 @@
         <span>Email</span>
         <div>
           <label for="name">
-            <img src="../assets/images/icons/email.svg" alt="Seu email" />
+            <img loading="lazy" src="../assets/images/icons/email.svg" alt="Seu email" />
           </label>
           <input type="email" placeholder="Informe o seu email" name="email" id="email" />
         </div>
@@ -61,10 +61,10 @@
         <span>Senha</span>
         <div>
           <label for="lock">
-            <img src="../assets/images/icons/lock.svg" alt="Sua senha" />
+            <img loading="lazy" src="../assets/images/icons/lock.svg" alt="Sua senha" />
           </label>
           <input type="password" placeholder="Informe sua senha" name="password" id="password" />
-          <img class="input-group-second-icon" src="../assets/images/icons/hide-password.svg" alt="Mostrar senha" onclick="togglePasswordVisibility()" />
+          <img loading="lazy" class="input-group-second-icon" src="../assets/images/icons/hide-password.svg" alt="Mostrar senha" onclick="togglePasswordVisibility()" />
         </div>
       </div>
       <a class="u-text-right u-text-bold u-text-small" onclick="showModal()" style="margin-left: auto;" href="#">Esqueceu sua senha?</a>
@@ -106,7 +106,7 @@
             <span>Email</span>
             <div>
               <label for="name">
-                <img src="../assets/images/icons/email.svg" alt="Seu email" />
+                <img loading="lazy" src="../assets/images/icons/email.svg" alt="Seu email" />
               </label>
               <input type="email" placeholder="Informe o seu email" name="email-password" id="email-password" />
             </div>
@@ -147,6 +147,15 @@
     if (event.target == modal) {
       modal.style.display = "none";
     }
+  }
+
+  function isAuth() {
+    fetch('./is-auth.php')
+    .then(response => {
+      if (response.status == 200) {
+        window.location.href = "../painel-de-controle";
+      }
+    });
   }
 
   var busy = false;

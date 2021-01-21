@@ -40,6 +40,7 @@ if (isset($data->email) && isset($data->password)) {
     $_SESSION['user'] = $response['user'];
     $_SESSION['name'] = $response['name'];
     $_SESSION['picture'] = $response['picture'];
+    $_SESSION['email'] = $response['email'];
     $_SESSION['isAuth'] = true;
   }
 } else {

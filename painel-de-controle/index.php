@@ -115,7 +115,7 @@ $picture = $_SESSION['picture'];
   var busy = false;
 
   function logout() {
-    window.location.href = './logout.php';
+    window.location.href = '../helpers/logout.php';
   }
 
   function goToProfile() {

@@ -2,10 +2,10 @@
 
 class Database {
 
-    private $host = "br850.hostgator.com.br";
-    private $database_name = "brainy29_main";
-    private $username = "brainy29_lele";
-    private $password = "saranghae123";
+  private $host = "br850.hostgator.com.br";
+  private $database_name = "brainy29_main";
+  private $username = "brainy29_lele";
+  private $password = "saranghae123";
 
   public $conn;
 

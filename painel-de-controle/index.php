@@ -69,6 +69,12 @@ $picture = $_SESSION['picture'];
 </body>
 
 <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../service-worker.js')
+      .then(reg => console.log('Service worker successfully installed 😍'))
+      .catch(err => console.error('Something went wrong while trying to install the service worker 😢', err));
+  }
+
   // <img loading="lazy" src = "../assets/images/icons/email.svg" / >
   function showModal(id, img, value) {
     let markup = `<div class="modal" id="modal" style="display: block">

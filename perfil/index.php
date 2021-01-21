@@ -123,6 +123,12 @@ $email = $_SESSION['email'];
 </body>
 
 <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../service-worker.js')
+      .then(reg => console.log('Service worker successfully installed 😍'))
+      .catch(err => console.error('Something went wrong while trying to install the service worker 😢', err));
+  }
+
   var busy = false;
 
   function togglePasswordVisibility(id) {

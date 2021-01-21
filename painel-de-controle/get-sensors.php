@@ -25,9 +25,9 @@ if (isset($_SESSION['isAuth']) && $_SESSION['isAuth'] == true) {
     $db = $database->getConnection();
     
     $sensors = new Sensors($db);
-    $sensors->user = $_SESSION['user'];
+    $sensors->user = (int)$_SESSION['user'];
     
-    http_response_code($response["status"]);
-    $result = $sensors->getAllSensors();
-    print($result);
+    $response = $sensors->getAllSensors();
+    http_response_code($response->status);
+    print(json_encode($response));
 }

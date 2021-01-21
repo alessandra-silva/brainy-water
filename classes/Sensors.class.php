@@ -1,5 +1,7 @@
 <?php
 
+ini_set('error_reporting', E_STRICT);
+
 class Sensors
 {
   // Connection
@@ -16,8 +18,10 @@ class Sensors
     $this->conn = $db;
   }
 
-  public function getAllSensors()
+  public function getAllSensors(): stdClass
   {
+    $data = new stdClass();
+
     try {
       $sqlQuery = "SELECT `id`, `name`, `type` 
                    FROM `Sensor`
@@ -29,11 +33,9 @@ class Sensors
 
       $stmt->execute();
 
-      $data = new stdClass();
       $counter = 0;
 
       while ($sensor = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $data->status = 200;
         $data->sensors[$counter]->id = $sensor['id'];
         $data->sensors[$counter]->name = $sensor['name'];
         $data->sensors[$counter]->type = $sensor['type'];
@@ -57,9 +59,12 @@ class Sensors
         $data->sensors[$counter]->date = (new DateTime($dataRow['date']))->format('d/m/Y H:i:s');
         $counter++;
       }
-      return json_encode($data);
+      $data->status = 200;
+      return $data;
     } catch (Exception $e) {
-      return array("status" => 500, "message" => "Something went wrong.");
+      $data->status = 500;
+      $data->message = "Something went wrong.";
+      return $data;
     }
   }
 

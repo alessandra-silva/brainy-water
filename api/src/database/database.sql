@@ -36,11 +36,21 @@ CREATE TABLE IF NOT EXISTS `Sensor_value`(
 -- https://emn178.github.io/online-tools/sha512.html
 
 INSERT INTO `User` (`name`, `email`,`password`)
-VALUES ("Mateus", "hello@mateux.dev", "2396a1c95eda66709d1609f7f74b6bd2306864f4287fa488ac4515c1bd3127940b69b9fa5dc82e0d71fa411ea093b7bedd3ef7c081405569dd54df97aa95676a");
+VALUES ("Lelezi", "alessandra-sa@hotmail.com", "5dff8adeea2d2eb0f4f39c291e1f0888c50e5cdc1bf06aa0d7bccbc5b9f3e6612c4a1aff02c35969bc249330acfdedac6d6ac263794524fc86a7f31ffca2d3d5");
 -- password: mateus
 
 INSERT INTO `Sensor` (`type`, `name`, `token`, `user`)
-VALUES ("vazao", "Vazão de água", "jkh31j2kh4kj12h43.mateuslucas", 1);
+VALUES ("vazao", "Vazão de água", "jkh31j2kh4kj12h43.lelezi", 1);
 
 INSERT INTO `Sensor_value` (`reading`, `sensor`)
 VALUES (123.43, 1);
+
+DELIMITER $$
+CREATE TRIGGER Trigger_Auto_Clean_Senso_Value AFTER INSERT
+ON Sensor_value
+FOR EACH ROW
+BEGIN
+    DELETE FROM Sensor_value WHERE date < (NOW() - INTERVAL 12 HOUR) AND sensor = new.sensor;
+END
+$$
+DELIMITER ;

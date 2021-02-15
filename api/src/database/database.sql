@@ -36,8 +36,8 @@ CREATE TABLE IF NOT EXISTS `Sensor_value`(
 -- https://emn178.github.io/online-tools/sha512.html
 
 INSERT INTO `User` (`name`, `email`,`password`)
-VALUES ("Lelezi", "alessandra-sa@hotmail.com", "5dff8adeea2d2eb0f4f39c291e1f0888c50e5cdc1bf06aa0d7bccbc5b9f3e6612c4a1aff02c35969bc249330acfdedac6d6ac263794524fc86a7f31ffca2d3d5");
--- password: mateus
+VALUES ("Lelezi", "alessandra-sa@hotmail.com", "a6ff8d5d74a25d0b1718252948c3420e710e7fa1ed2af4bdee8146c78ff7248ba9f2abf95646c6483520a723dbbde8987dc4c3acd88cac6fe279b0e79bf95b05");
+-- password: amolelezi
 
 INSERT INTO `Sensor` (`type`, `name`, `token`, `user`)
 VALUES ("vazao", "Vazão de água", "jkh31j2kh4kj12h43.lelezi", 1);
